@@ -1,5 +1,8 @@
 ElDream::Application.routes.draw do
 
+  resources :lists
+
+
   root :to => "dream_core#home"
 
   match "/lists", to: "dream_core#lists"

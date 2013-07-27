@@ -41,7 +41,6 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list = List.new(params[:list])
-    @list = Time.now
 
     respond_to do |format|
       if @list.save

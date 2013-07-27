@@ -1,5 +1,8 @@
 ElDream::Application.routes.draw do
 
+  resources :ideas
+
+
   resources :lists
 
 

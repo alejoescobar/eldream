@@ -4,7 +4,15 @@
   <b>Name:</b>
   <%= @list.name %>
 </p>
+<p>
+	<% @list.ideas.each_with_index.map do |idea, index| %>
+  <p>
+    <td><%= index += 1 %>. <%= idea.idea %></td>
+  </p>
+    <% end %>  
+</p>
 
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'New Idea', new_idea_path(list_id: @list) %> |
 <%= link_to 'Back', lists_path %>

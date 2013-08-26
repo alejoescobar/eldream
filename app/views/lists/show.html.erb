@@ -5,7 +5,7 @@
   <%= @list.name %>
 </p>
 <p>
-	<% @list.ideas.each_with_index.map do |idea, index| %>
+  <% @list.ideas.each_with_index.map do |idea, index| %>
   <p>
     <td><%= index += 1 %>. <%= idea.idea %></td>
   </p>

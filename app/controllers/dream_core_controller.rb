@@ -1,5 +1,6 @@
 class DreamCoreController < ApplicationController
   def home
+  	@selected_tab = 'home'
   end
 
   def lists

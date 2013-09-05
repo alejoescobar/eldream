@@ -6,32 +6,24 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= render "layouts/header" %>
+  <div class="container">
+
 <% if !notice.nil? %>
-<p class="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
 <% end %>
 <% if !alert.nil? %>
-<p class="alert"><%= alert %></p>
+  <p class="alert"><%= alert %></p>
 <% end %>
 
 <%= render "layouts/navigation" %>
-
-<section class="sidebar" id="right">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> 
-  <% end %>
-</section>
-
-
 
 <%= yield %>
 
 <%= render "layouts/footer" %>
 
+  </div>
 </body>
 </html>

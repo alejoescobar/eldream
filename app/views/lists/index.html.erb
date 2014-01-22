@@ -11,24 +11,29 @@
 
 <% @lists.each do |list| %>
   <tr>
-    <td><a href="#myModal" data-toggle="modal"><%= list.name %></a></td>
+    <td><a class="show-ideas" href="#" data-toggle="modal" data-target="#modal-<%=list.id %>"><%= list.name %></a></td>
     <td><%= list.created_at.strftime("%B %d, %Y") %></td>
     <td><%= link_to 'Show', list %></td>
     <td><%= link_to 'Edit', edit_list_path(list) %></td>
     <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="modal-<%= list.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel"><%= list.name %></h3>
   </div>
   <div class="modal-body">
+    <%= form_for @idea, remote: true do |f| %>
+    <%= f.text_field :idea %>
+    <%= f.submit %>
+    <%= hidden_field_tag 'ideas_list_id', list.id %>
+<% end %>   
     <p>
     <% list.ideas.each_with_index.map do |idea, index| %>
    <p>
     <%= index += 1 %>. <%= idea.idea %>
   </p>
-    <% end %>  
+    <% end %>
 </p>
   </div>
   <div class="modal-footer">
@@ -40,6 +45,14 @@
 </table>
 
 <br />
+ 
 
 <%= link_to 'New List', new_list_path %>
 
+  <script> 
+//   $('.show-ideas').click(function (e) { 
+//     e.preventDefault() ;
+//     $('#myModal').modal('show') ;
+//     $("#idea_list_id").val($(this).attr('data'));
+//   });
+  </script>

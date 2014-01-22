@@ -5,6 +5,7 @@ before_filter :authenticate_user!
   # GET /lists.json
   def index
     @lists = List.where(:user_id => current_user.id)
+    @idea = Idea.new
 
     respond_to do |format|
       format.html # index.html.erb
